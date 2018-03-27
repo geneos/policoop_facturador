@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+ 
+
+        <record model="ir.ui.view" id="crear_facturas_start_view_form">
+            <field name="model">wizard_facturador.crear_facturas.start</field>
+            <field name="type">form</field>
+            <field name="name">crear_facturas_start_view_form</field>
+        </record>
+        <record model="ir.ui.view" id="crear_facturas_exito_view_form">
+            <field name="model">wizard_facturador.crear_facturas.exito</field>
+            <field name="type">form</field>
+            <field name="name">crear_facturas_exito_view_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_crear_facturas">
+            <field name="name">Crear Facturas en Lote</field>
+            <field name="wiz_name">wizard_facturador.crear_facturas</field>
+        </record>
+
+        <menuitem name="Procesos" sequence="17" id="menu_procesos" icon="tryton-preferences"/>
+ 
+        <menuitem parent="sigcoop_menus.menu_procesos" secuence="20"
+            action="wizard_crear_facturas" id="menu_wizard_crear_facturas"/>
+    </data>
+</tryton>

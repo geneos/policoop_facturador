@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="notacredito_start_view_form">
+            <field name="model">sigcoop_wizard_ventas.notacredito.start</field>
+            <field name="type">form</field>
+            <field name="name">notacredito_start_view_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="notacredito_resumen_view_form">
+            <field name="model">sigcoop_wizard_ventas.notacredito.exito</field>
+            <field name="type">form</field>
+            <field name="name">notacredito_resumen_view_form</field>
+        </record>
+ 
+        <record model="ir.action.wizard" id="wizard_notacreditos">
+            <field name="name">Creador de Notas de Creditos</field>
+            <field name="wiz_name">sigcoop_wizard_ventas.notacredito</field>
+        </record>
+
+ 
+        <menuitem parent="sigcoop_menus.menu_procesos"
+            action="wizard_notacreditos" id="menu_wizard_notacreditos"/>
+    </data>
+</tryton>

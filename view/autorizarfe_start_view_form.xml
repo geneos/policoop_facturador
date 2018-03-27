@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Autorizacion de Comprobantes Electrónicos" col="2">
+	<label name="fecha_emision"/>
+	<field name="fecha_emision"/>
+	<label name="pos"/>
+	<field name="pos" widget="selection"/>	
+</form>

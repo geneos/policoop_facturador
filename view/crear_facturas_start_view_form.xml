@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Crear facturas en lote" col="2">
+    <label name="tipofac"/>
+    <field name="tipofac" widget="selection"/>
+    <newline/>
+    <label name="plan_salud"/>
+    <field name="plan_salud"/>
+    <newline/>    
+    <label name="fecha_emision_factura"/>
+    <field name="fecha_emision_factura" />
+    <newline/>        
+    <label name="insurance"/>
+    <field name="insurance"/>     
+</form>
