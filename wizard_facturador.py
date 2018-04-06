@@ -6,8 +6,7 @@ import logging
 import itertools
 logger = logging.getLogger('sale')
 REQUERIDO = True
-from creador_ventas import CreadorVentas
-from creador_ventas_viejo import CreadorVentasViejo
+from creador_facturas import CreadorFacturas
 from trytond.transaction import Transaction
 import datetime
 from trytond.pyson import Eval, And, Bool, Equal, Not, Or
