@@ -1,10 +1,5 @@
 # -*' coding: utf8 -*-
 
-#COMPANY NAME
-#Sierra: "COOPERSIVE LTDA."
-#Puan: "COOPERATIVA DE SERVICIOS Y OBRAS PUBLICAS LTDA DE PUAN"
-#San Manuel: "COOPERATIVA ELECTRICA DE SMA"
-
 import sys
 import os
 from trytond.pool import Pool
@@ -12,13 +7,8 @@ from decimal import Decimal, ROUND_DOWN, ROUND_UP, ROUND_HALF_UP
 from trytond.transaction import Transaction
 import datetime
 import math
-import psycopg2
 REQUERIDO = True
 
-
-conn = psycopg2.connect(host='localhost' ,dbname='arba', user='tryton',
-	password='tryton')
-cur = conn.cursor()
 
 
 class CreadorFacturas(object):
