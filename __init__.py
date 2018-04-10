@@ -13,10 +13,10 @@ def register():
     Pool.register(
         CrearFacturasStart,
         CrearFacturasExito,        
-        module='sigcoop_wizard_facturador', type_='model')
+        module='policoop_facturador', type_='model')
 
     Pool.register(
         CrearFacturas,
         #AutorizarFe,
         #notacredito,
-        module='sigcoop_wizard_facturador', type_='wizard')
+        module='policoop_facturador', type_='wizard')

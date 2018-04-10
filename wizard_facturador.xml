@@ -6,18 +6,18 @@ this repository contains the full copyright notices and license terms. -->
  
 
         <record model="ir.ui.view" id="crear_facturas_start_view_form">
-            <field name="model">wizard_facturador.crear_facturas.start</field>
+            <field name="model">policoop_facturador.crear_facturas.start</field>
             <field name="type">form</field>
             <field name="name">crear_facturas_start_view_form</field>
         </record>
         <record model="ir.ui.view" id="crear_facturas_exito_view_form">
-            <field name="model">wizard_facturador.crear_facturas.exito</field>
+            <field name="model">policoop_facturador.crear_facturas.exito</field>
             <field name="type">form</field>
             <field name="name">crear_facturas_exito_view_form</field>
         </record>
         <record model="ir.action.wizard" id="wizard_crear_facturas">
             <field name="name">Crear Facturas en Lote</field>
-            <field name="wiz_name">wizard_facturador.crear_facturas</field>
+            <field name="wiz_name">policoop_facturador.crear_facturas</field>
         </record>
 
         <menuitem name="Procesos" sequence="17" id="menu_procesos" icon="tryton-preferences"/>
