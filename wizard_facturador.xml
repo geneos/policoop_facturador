@@ -22,7 +22,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem name="Procesos" sequence="17" id="menu_procesos" icon="tryton-preferences"/>
  
-        <menuitem parent="sigcoop_menus.menu_procesos" secuence="20"
+        <menuitem parent="wizard_facturador.menu_procesos" secuence="20"
             action="wizard_crear_facturas" id="menu_wizard_crear_facturas"/>
     </data>
 </tryton>

@@ -21,7 +21,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
  
-        <menuitem parent="sigcoop_menus.menu_procesos"
+        <menuitem parent="wizard_facturador.menu_procesos"
             action="wizard_notacreditos" id="menu_wizard_notacreditos"/>
     </data>
 </tryton>
