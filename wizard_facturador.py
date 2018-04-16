@@ -202,6 +202,7 @@ class CreadorFacturas(object):
         #Chequeo que no haya factura de ese asegurado, posteada, con esa fecha
         invoice_facturada = Invoice.search([('date','=', self.fecha_emision_factura), ('insurance','=',insurance_id), ('state','=','posted')])
 
+        import pudb;pu.db
         if not invoice_facturada:
                         
             #VENTA
