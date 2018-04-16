@@ -186,7 +186,7 @@ class CreadorFacturas(object):
             #Le agrego la sequence = 1 para cargos fijos
             up = producto.list_price
             ret.append(
-                self.crear_sale_line(1, producto, up 1)
+                self.crear_sale_line(1, producto, up, 1)
             )
         return ret
         
