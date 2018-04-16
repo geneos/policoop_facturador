@@ -83,8 +83,8 @@ class CrearFacturas(Wizard):
         Company = Pool().get('company.company')
         cuit_policoop = Company(Transaction().context.get('company')).party.vat_number
 
-        import pudb;pu.db
-        
+        import pdb;pdb.set_trace()
+
         Insurances = Pool().get('gnuhealth.insurance')
         if self.start.plan_salud:
             filtro_insurance = [
@@ -204,7 +204,7 @@ class CreadorFacturas(object):
         #Chequeo que no haya factura de ese asegurado, posteada, con esa fecha
         invoice_facturada = Invoice.search([('date','=', self.fecha_emision_factura), ('insurance','=',insurance_id), ('state','=','posted')])
 
-        import pudb;pu.db
+        pdb.set_trace()
         if not invoice_facturada:
                         
             #VENTA
