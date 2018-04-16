@@ -88,7 +88,7 @@ class CrearFacturas(Wizard):
         Insurances = Pool().get('gnuhealth.insurance')
         if self.start.plan_salud:
             filtro_insurance = [
-                ('member_exp', '<=', datetime.date.today()),
+                ('member_exp', '>=', datetime.date.today()),
                 ('plan_id', '=', self.start.plan_salud),
             ]
         else:
