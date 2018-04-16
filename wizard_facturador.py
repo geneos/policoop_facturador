@@ -104,7 +104,6 @@ class CrearFacturas(Wizard):
 
         if insurances:
             for item in insurances:
-                import pdb;pdb.set_trace()
                 creadorfacturas = CreadorFacturas(self.start.fecha_emision_factura)
                 creadorfacturas.crear_venta_padre(item.id)
                 Transaction().cursor.commit()
@@ -202,7 +201,7 @@ class CreadorFacturas(object):
         insurance = Pool().get('gnuhealth.insurance')(insurance_id)             
         Invoice = Pool().get('account.invoice')     
         #Chequeo que no haya factura de ese asegurado, posteada, con esa fecha
-        invoice_facturada = Invoice.search([('date','=', self.fecha_emision_factura), ('insurance','=',insurance_id), ('state','=','posted')])
+        invoice_facturada = Invoice.search([('invoice_date','=', self.fecha_emision_factura), ('insurance','=',insurance_id), ('state','=','posted')])
 
         pdb.set_trace()
         if not invoice_facturada:
