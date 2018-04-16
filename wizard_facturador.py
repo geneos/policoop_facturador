@@ -83,6 +83,8 @@ class CrearFacturas(Wizard):
         Company = Pool().get('company.company')
         cuit_policoop = Company(Transaction().context.get('company')).party.vat_number
 
+        import pudb;pu.db
+        
         Insurances = Pool().get('gnuhealth.insurance')
         if self.start.plan_salud:
             filtro_insurance = [
