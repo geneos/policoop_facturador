@@ -83,8 +83,7 @@ class CrearFacturas(Wizard):
         Company = Pool().get('company.company')
         cuit_policoop = Company(Transaction().context.get('company')).party.vat_number
 
-        import pdb;pdb.set_trace()
-
+    
         Insurances = Pool().get('gnuhealth.insurance')
         if self.start.plan_salud:
             filtro_insurance = [
@@ -105,7 +104,8 @@ class CrearFacturas(Wizard):
 
         if insurances:
             for item in insurances:
-                creadorfacturas = self.CreadorFacturas(self.start.fecha_emision_factura)
+                import pdb;pdb.set_trace()
+                creadorfacturas = CreadorFacturas(self.start.fecha_emision_factura)
                 creadorfacturas.crear_venta_padre(item.id)
                 Transaction().cursor.commit()
 
