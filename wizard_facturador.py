@@ -224,7 +224,7 @@ class CreadorFacturas(object):
 
                 #1 Cargos Fijos             
                 #Las lineas que no dependen del consumo, solo se crean una vez por venta
-                sale_lines.extend(self.crear_sale_lines_independientes_consumo(party, insurance.plan_id.name))
+                sale_lines.extend(self.crear_sale_lines_independientes_consumo(party, insurance.plan_id.name.name))
                 sale.lines = sale_lines
                 sale.save()
                 sale_lines = []                                                         
