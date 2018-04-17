@@ -106,7 +106,7 @@ class CrearFacturas(Wizard):
             for item in insurances:
                 creadorfacturas = CreadorFacturas(self.start.fecha_emision_factura)
                 creadorfacturas.crear_venta_padre(item.id)
-                Transaction().cursor.commit()
+                #Transaction().cursor.commit()
 
         return 'end'
 
