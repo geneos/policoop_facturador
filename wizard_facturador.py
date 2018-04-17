@@ -269,7 +269,7 @@ class CreadorFacturas(object):
                                                                                     
                         #Transaction().cursor.commit()               
 
-                self.actualizar_resumen_importacion(sale)
+                #self.actualizar_resumen_importacion(sale)
 
         return True
         
