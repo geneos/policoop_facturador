@@ -202,7 +202,7 @@ class CreadorFacturas(object):
         Invoice = Pool().get('account.invoice')     
         #Chequeo que no haya factura de ese asegurado, posteada, con esa fecha
         invoice_facturada = Invoice.search([('invoice_date','=', self.fecha_emision_factura), ('insurance','=',insurance_id), ('state','=','posted')])
-
+        import pdb
         pdb.set_trace()
         if not invoice_facturada:
                         
