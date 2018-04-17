@@ -1,4 +1,4 @@
-from trytond.model import Workflow, ModelView, ModelSQL, Fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pool import Pool
 
 __all__ = ['Invoice']
