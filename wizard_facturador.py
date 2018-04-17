@@ -180,9 +180,9 @@ class CreadorFacturas(object):
     
     def crear_sale_lines_independientes_consumo(self, party, product_name):
         ret = []
-        #Obtenemos los productos que son cargos fijos, de la lista de precios que recibimos como parametro
-        filtro_producto = lambda x: (x.product.name == product_name)
-        productos = map(lambda x: x.product, filter(filtro_producto))
+        #Obtenemos los productos que son cargos fijos, de la lista de precios que recibimos como parametro        
+        productos = Pool().get('product.product').search([('name','=',product_name)])
+        #Chequeo que no haya factura de ese asegurado, posteada, con esa fecha
         for producto in productos:                  
             #Le agrego la sequence = 1 para cargos fijos
             up = producto.list_price
