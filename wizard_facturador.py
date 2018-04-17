@@ -267,7 +267,7 @@ class CreadorFacturas(object):
                         
                         #QUEDA EN BORRADOR
                                                                                     
-                        Transaction().cursor.commit()               
+                        #Transaction().cursor.commit()               
 
                 self.actualizar_resumen_importacion(sale)
 
