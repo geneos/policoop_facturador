@@ -262,8 +262,8 @@ class CreadorFacturas(object):
                         sale.invoices[0].invoice_date = self.fecha_emision_factura                      
                         sale.invoices[0].pos = pos                                              
                         #Revisar
-                        invoice_type_ret = sale.invoices[0].on_change_pos()["invoice_type"]                     
-                        sale.invoices[0].invoice_type = sale.invoices[0].on_change_pos()["invoice_type"]                                            
+                        #invoice_type_ret = sale.invoices[0].on_change_pos()["invoice_type"]                     
+                        #sale.invoices[0].invoice_type = sale.invoices[0].on_change_pos()["invoice_type"]                                            
                         
                         #QUEDA EN BORRADOR
                                                                                     
