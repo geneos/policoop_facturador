@@ -270,8 +270,10 @@ class CreadorFacturas(object):
                         sale.invoices[0].pos = pos                                              
                         if party.iva_condition == 'responsable_inscripto':
                             kind = 'A'
+                            sale.invoices[0].type = 'Factura A'
                         else: 
                             kind = 'B'
+                            sale.invoices[0].type = 'Factura B'
 
                         #PosSequence = Pool().get('account.pos.sequence')
                         invoice_type, invoice_type_desc = INVOICE_TYPE_AFIP_CODE[
@@ -282,7 +284,7 @@ class CreadorFacturas(object):
                         #    ('invoice_type', '=', invoice_type)
                         #])
 
-                        sale.invoices[0].invoice_type = invoice_type                      
+                        #sale.invoices[0].invoice_type = invoice_type                      
                         sale.invoices[0].save()
 
                         #Revisar
