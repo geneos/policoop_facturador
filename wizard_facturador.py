@@ -278,7 +278,7 @@ class CreadorFacturas(object):
                                 ('out', kind)
                             ]
                         sequences = PosSequence.search([
-                            ('pos', '=', pos),
+                            ('pos', '=', pos.id),
                             ('invoice_type', '=', invoice_type)
                         ])
 
