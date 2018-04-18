@@ -279,12 +279,12 @@ class CreadorFacturas(object):
                         invoice_type, invoice_type_desc = INVOICE_TYPE_AFIP_CODE[
                                 ('out', kind)
                             ]
-                        #sequences = PosSequence.search([
-                        #    ('pos', '=', pos.id),
-                        #    ('invoice_type', '=', invoice_type)
-                        #])
+                        sequences = PosSequence.search([
+                            ('pos', '=', pos.id),
+                            ('invoice_type', '=', invoice_type)
+                        ])
 
-                        #sale.invoices[0].invoice_type = invoice_type                      
+                        sale.invoices[0].invoice_type = sequences[0].invoice_type
                         sale.invoices[0].save()
 
                         #Revisar
