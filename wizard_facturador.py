@@ -15,6 +15,13 @@ import os
 from decimal import Decimal, ROUND_DOWN, ROUND_UP, ROUND_HALF_UP
 import math
 
+INVOICE_TYPE_AFIP_CODE = {
+        ('out', 'A'): ('1', u'01-Factura A'),
+        ('out', 'B'): ('6', u'06-Factura B'),
+        ('out', 'C'): ('11', u'11-Factura C'),
+        ('out', 'E'): ('19', u'19-Factura E'),
+        }
+
 class CrearFacturasStart(ModelView):
     'Crear Facturas Start'
     __name__ = 'policoop_facturador.crear_facturas.start'
@@ -261,7 +268,23 @@ class CreadorFacturas(object):
                         #import pudb;pu.db
                         sale.invoices[0].invoice_date = self.fecha_emision_factura                      
                         sale.invoices[0].pos = pos                                              
+                        if party.iva_condition == 'responsable_inscripto':
+                            kind = 'A'
+                        else: 
+                            kind = 'B'
+
+                        PosSequence = Pool().get('account.pos.sequence')
+                        invoice_type, invoice_type_desc = INVOICE_TYPE_AFIP_CODE[
+                                ('out', kind)
+                            ]
+                        sequences = PosSequence.search([
+                            ('pos', '=', pos),
+                            ('invoice_type', '=', invoice_type)
+                        ])
+
+                        sale.invoices[0] = sequences[0].id                        
                         sale.invoices[0].save()
+
                         #Revisar
                         #invoice_type_ret = sale.invoices[0].on_change_pos()["invoice_type"]                     
                         #sale.invoices[0].invoice_type = sale.invoices[0].on_change_pos()["invoice_type"]                                            
