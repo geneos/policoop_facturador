@@ -282,7 +282,7 @@ class CreadorFacturas(object):
                             ('invoice_type', '=', invoice_type)
                         ])
 
-                        sale.invoices[0] = sequences[0].id                        
+                        sale.invoices[0].invoice_type = sequences[0].id                        
                         sale.invoices[0].save()
 
                         #Revisar
