@@ -15,7 +15,7 @@ def register():
         CrearFacturasStart,
         CrearFacturasExito, 
         Invoice,        
-        AutorizarFeStart
+        AutorizarFeStart,
         module='policoop_facturador', type_='model')
 
     Pool.register(
