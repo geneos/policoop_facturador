@@ -275,7 +275,7 @@ class CreadorFacturas(object):
                             kind = 'B'
                             sale.invoices[0].type = 'Factura B'
 
-                        #PosSequence = Pool().get('account.pos.sequence')
+                        PosSequence = Pool().get('account.pos.sequence')
                         invoice_type, invoice_type_desc = INVOICE_TYPE_AFIP_CODE[
                                 ('out', kind)
                             ]
