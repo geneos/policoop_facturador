@@ -5,7 +5,7 @@ from trytond.pool import Pool
 from .wizard_facturador import CrearFacturasStart, CrearFacturas, CrearFacturasExito
 from .invoice import Invoice
 #from .resumen import ResumenCreacion
-#from .autorizar_fe import AutorizarFeStart, AutorizarFe
+from .autorizar_fe import AutorizarFeStart, AutorizarFe
 #from .wizard_nc import notacreditoStart, notacreditoExito, notacredito
 
 
@@ -15,10 +15,11 @@ def register():
         CrearFacturasStart,
         CrearFacturasExito, 
         Invoice,        
+        AutorizarFeStart
         module='policoop_facturador', type_='model')
 
     Pool.register(
         CrearFacturas,
-        #AutorizarFe,
+        AutorizarFe,
         #notacredito,
         module='policoop_facturador', type_='wizard')

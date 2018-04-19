@@ -269,18 +269,15 @@ class CreadorFacturas(object):
                         sale.invoices[0].invoice_date = self.fecha_emision_factura                      
                         sale.invoices[0].pos = pos                                              
                         if party.iva_condition == 'responsable_inscripto':
-                            kind = 'A'
-                            #sale.invoices[0].type = 'Factura A'
+                            kind = 'A'                            
                         else: 
                             kind = 'B'
-                            #sale.invoices[0].type = 'Factura B'
-
+                            
                         PosSequence = Pool().get('account.pos.sequence')
                         invoice_type, invoice_type_desc = INVOICE_TYPE_AFIP_CODE[
                                 ('out', kind)
                             ]
-
-                        import pdb;pdb.set_trace()
+                        
                         sequences = PosSequence.search([
                             ('pos', '=', pos.id),
                             ('invoice_type', '=', invoice_type)
@@ -288,11 +285,7 @@ class CreadorFacturas(object):
 
                         sale.invoices[0].invoice_type = sequences[0].id
                         sale.invoices[0].save()
-
-                        #Revisar
-                        #invoice_type_ret = sale.invoices[0].on_change_pos()["invoice_type"]                     
-                        #sale.invoices[0].invoice_type = sale.invoices[0].on_change_pos()["invoice_type"]                                            
-                        #sale.invoices[0].save()
+                        
                         #QUEDA EN BORRADOR
                                                                                     
                         #Transaction().cursor.commit()               
