@@ -280,7 +280,7 @@ class CreadorFacturas(object):
                                 ('out', kind)
                             ]
 
-                        import pudb;pu.db
+                        import pdb;pdb.set_trace()
                         sequences = PosSequence.search([
                             ('pos', '=', pos.id),
                             ('invoice_type', '=', invoice_type)
