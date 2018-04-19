@@ -279,6 +279,8 @@ class CreadorFacturas(object):
                         invoice_type, invoice_type_desc = INVOICE_TYPE_AFIP_CODE[
                                 ('out', kind)
                             ]
+
+                        import pudb;pu.db
                         sequences = PosSequence.search([
                             ('pos', '=', pos.id),
                             ('invoice_type', '=', invoice_type)
