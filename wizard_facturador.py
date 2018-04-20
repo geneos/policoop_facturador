@@ -30,13 +30,19 @@ class CrearFacturasStart(ModelView):
         ('individual', 'Individual')
         ], 'Tipo de Facturacion', required=REQUERIDO)
 
-    plan_salud = fields.Many2One('gnuhealth.insurance.plan', 'Tipo de plan de salud', 
-         {'required': Eval('tipofac') == 'masivo'})
-         
+    #Obligatorio solo si Masivo
+    plan_salud = fields.Many2One('gnuhealth.insurance.plan', 'Tipo de plan de salud',        
+       states={           
+           'required': Eval('tipofac') == 'masivo',
+            })     
+
+
     fecha_emision_factura = fields.Date('Fecha emision factura', required=REQUERIDO)
     #Obligatorio solo si Individual
-    insurance = fields.Many2One('gnuhealth.insurance', 'Asociado', 
-         {'required': Eval('tipofac') == 'individual'})
+    insurance = fields.Many2One('gnuhealth.insurance', 'Asociado',        
+        states={           
+           'required': Eval('tipofac') == 'individual',
+            })     
 
 
 
