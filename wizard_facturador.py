@@ -6,7 +6,6 @@ import logging
 import itertools
 logger = logging.getLogger('sale')
 REQUERIDO = True     
-#from creador_facturas import CreadorFacturas
 from trytond.transaction import Transaction
 import datetime
 from trytond.pyson import Eval, And, Bool, Equal, Not, Or
@@ -31,10 +30,13 @@ class CrearFacturasStart(ModelView):
         ('individual', 'Individual')
         ], 'Tipo de Facturacion', required=REQUERIDO)
 
-    plan_salud = fields.Many2One('gnuhealth.insurance.plan', 'Tipo de plan de salud')
+    plan_salud = fields.Many2One('gnuhealth.insurance.plan', 'Tipo de plan de salud', 
+         {'required': Eval('tipofac').in_(['masivo'])})
     fecha_emision_factura = fields.Date('Fecha emision factura', required=REQUERIDO)
     #Obligatorio solo si Individual
-    insurance = fields.Many2One('gnuhealth.insurance', 'Asociado')
+    insurance = fields.Many2One('gnuhealth.insurance', 'Asociado', 
+         {'required': Eval('tipofac').in_(['individual'])})
+
 
 
 class CrearFacturasExito(ModelView):
