@@ -228,7 +228,7 @@ class CreadorFacturas(object):
                 
             with Transaction().set_context({"customer": party}):
                 #Creamos la venta a la que le vamos a asociar las lineas de venta
-                descripcion = insurance.name.name + " - " + str(insurance.plan_id.name.name)
+                descripcion = insurance.name.name + " - " + insurance.plan_id.name.name
                 sale = Sale(
                         party = insurance.name,                     
                         description = descripcion,
