@@ -247,14 +247,14 @@ class CreadorFacturas(object):
                             
                 #IMPUESTOS - SE LLAMA UNA SOLA VEZ
                 #Aplicamos los impuestos que correspondan a cada linea de venta y los del suministro-usuarios
-                #Tax = Pool().get('account.tax')
-                #for i in sale.lines:                   
+                Tax = Pool().get('account.tax')
+                for i in sale.lines:                   
                 #    up = i.unit_price
-                #    tax_ids = i.on_change_product().get("taxes")#lista de ids                   
+                    tax_ids = i.on_change_product().get("taxes")#lista de ids                   
                 #    i.unit_price = up
-                #    tax_browse_records = Tax.browse(tax_ids) or []
-                #    i.taxes = tuple(tax_browse_records)
-                #    i.save()
+                    tax_browse_records = Tax.browse(tax_ids) or []
+                    i.taxes = tuple(tax_browse_records)
+                    i.save()
                 
                 #Controlo que no sea menor a cero el total
                 if sale.total_amount >= Decimal('0'):
