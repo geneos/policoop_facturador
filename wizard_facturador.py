@@ -244,8 +244,14 @@ class CreadorFacturas(object):
                 sale.save()
                 sale_lines = []                                                         
             
-                import pdb
-                pdb.set_trace()
+                #import pdb
+                #pdb.set_trace()
+
+                Tax = Pool().get('account.tax')
+                for i in sale.lines:                    
+                    tax_browse_records = Tax.browse([2]) or []                                            
+                    i.taxes = tuple(tax_browse_records)
+                    i.save()
 
                                             
                 #Controlo que no sea menor a cero el total
