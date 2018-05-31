@@ -1,0 +1,23 @@
+msgctxt "field:policoop_facturador.crear_facturas.exito,resumen:"
+msgid "Resumen"
+msgstr "Resumenssda"
+
+msgctxt "field:policoop_facturador.crear_facturas.exito,resumen:"
+msgid "Facturas creadas"
+msgstr "8 facturas creadas"
+
+msgctxt "view:policoop_facturador.crear_facturas.exito,resumen:"
+msgid "Facturas creadas"
+msgstr "2 facturas creadas"
+
+msgctxt "view:policoop_facturador.crear_facturas.exito:"
+msgid "Facturas creadas"
+msgstr "6 facturas creadas"
+
+msgctxt "view:policoop_facturador.crear_facturas:"
+msgid "Facturas creadas"
+msgstr "7 facturas creadas"
+
+msgctxt "view:policoop_facturador:"
+msgid "Facturas creadas"
+msgstr "5 facturas creadas"
