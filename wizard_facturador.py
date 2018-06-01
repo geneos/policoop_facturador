@@ -248,9 +248,11 @@ class CreadorFacturas(object):
                 #pdb.set_trace()
 
                 Tax = Pool().get('account.tax')
+                tax = Tax.search([('name', '=', 'IVA 21% Ventas')])[0]                                                                  
                 for i in sale.lines:                    
-                    tax_browse_records = Tax.browse([2]) or []                                            
-                    i.taxes = tuple(tax_browse_records)
+                    #tax_browse_records = Tax.browse([2]) or []                                            
+                    #i.taxes = tuple(tax_browse_records)
+                    i.taxes = tuple(tax)
                     i.save()
 
                                             
