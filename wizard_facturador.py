@@ -280,7 +280,6 @@ class CreadorFacturas(object):
                     #Tambien seteamos el suministro.
                     hoy = datetime.date.today()
                     if sale.invoices:
-                        #import pudb;pu.db
                         sale.invoices[0].invoice_date = self.fecha_emision_factura
                         sale.invoices[0].pos = pos
                         if party.iva_condition == 'responsable_inscripto':
@@ -309,7 +308,7 @@ class CreadorFacturas(object):
                         
                         #QUEDA EN BORRADOR
                                                                                     
-                        #Transaction().cursor.commit()               
+                        Transaction().cursor.commit()               
 
                 #self.actualizar_resumen_importacion(sale)
 
