@@ -1,0 +1,3 @@
+msgctxt "field:policoop_facturador.crear_facturas.exito,resumen:"
+msgid "Resumen"
+msgstr "Resumen"
