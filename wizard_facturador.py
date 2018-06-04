@@ -294,6 +294,7 @@ class CreadorFacturas(object):
                         sale.invoices[0].pyafipws_concept = 2 # 2 es servicios
                         sale.invoices[0].pyafipws_billing_start_date = self.fecha_emision_factura
                         sale.invoices[0].pyafipws_billing_end_date = self.fecha_emision_factura
+                        sale.invoices[0].save()
 
                         PosSequence = Pool().get('account.pos.sequence')
                         invoice_type, invoice_type_desc = INVOICE_TYPE_AFIP_CODE[
