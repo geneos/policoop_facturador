@@ -182,14 +182,26 @@ class CreadorFacturas(object):
         """
         
         SaleLine = Pool().get('sale.line')
-        new_line = SaleLine(
-                product=product,
-                quantity=Decimal(round(amount,2)),
-                description=product.name,
-                unit=product.default_uom,
-                unit_price = Decimal(unit_price),
-                sequence = sequence,                
-                )
+        
+        #new_line = SaleLine(
+        #        product=product,
+        #        quantity=Decimal(round(amount,2)),
+        #        description=product.name,
+        #        unit=product.default_uom,
+        #        unit_price = Decimal(unit_price),
+        #        sequence = sequence,                
+        #        )
+
+        new_line = SaleLine()
+        new_line.product = product
+        new_line.on_change_product()
+        new_line.quantity = Decimal(round(amount,2))
+        new_line.on_change_quantity()
+        new_line.description = product.name
+        new_line.unit = product.default_uom
+        new_line.on_change_unit()
+        new_line.unit_price = Decimal(unit_price)
+        new_line.sequence = sequence
 
         return new_line
 
@@ -279,6 +291,13 @@ class CreadorFacturas(object):
                         else: 
                             kind = 'B'
                             
+                        factura = sale.invoices[0]
+                        factura.pyafipws_concept = 2 # 2 es servicios
+                        factura.pyafipws_billing_start_date = self.fecha_emision_factura
+                        factura.pyafipws_billing_end_date = self.fecha_emision_factura
+                        factura.save()
+
+
                         PosSequence = Pool().get('account.pos.sequence')
                         invoice_type, invoice_type_desc = INVOICE_TYPE_AFIP_CODE[
                                 ('out', kind)
