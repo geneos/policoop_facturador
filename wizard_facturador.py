@@ -182,16 +182,14 @@ class CreadorFacturas(object):
         """
         
         SaleLine = Pool().get('sale.line')
-        new_line = SaleLine()
-        new_line.product = product
-        new_line.on_change_product()
-        new_line.quantity = Decimal(round(amount,2))
-        new_line.on_change_quantity()
-        new_line.description = product.name
-        new_line.unit = product.default_uom
-        new_line.on_change_unit()
-        new_line.unit_price = Decimal(unit_price)
-        new_line.sequence = sequence
+        new_line = SaleLine(
+                product=product,
+                quantity=Decimal(round(amount,2)),
+                description=product.name,
+                unit=product.default_uom,
+                unit_price = Decimal(unit_price),
+                sequence = sequence,                
+                )
 
         return new_line
 
@@ -201,7 +199,7 @@ class CreadorFacturas(object):
         #Obtenemos los productos que son cargos fijos, de la lista de precios que recibimos como parametro        
         productos = Pool().get('product.product').search([('name','=',product_name)])
         #Chequeo que no haya factura de ese asegurado, posteada, con esa fecha
-        for producto in productos:
+        for producto in productos:                  
             #Le agrego la sequence = 1 para cargos fijos
             up = producto.list_price
             ret.append(
@@ -230,37 +228,31 @@ class CreadorFacturas(object):
                 
             with Transaction().set_context({"customer": party}):
                 #Creamos la venta a la que le vamos a asociar las lineas de venta
-                descripcion = insurance.name.name + " - " + insurance.plan_id.name.name
+                descripcion = str(insurance.name.name.encode('utf-8')) + " - " + str(insurance.plan_id.name.name.encode('utf-8'))
                 sale = Sale(
-                        party = insurance.name,
+                        party = insurance.name,                     
                         description = descripcion,
                         pos = pos
                 )
-                sale.save()
-
                 #Creamos las lineas para los distintos tipos de productos
                 sale_lines = []
 
-                #1 Cargos Fijos
+                #1 Cargos Fijos             
                 #Las lineas que no dependen del consumo, solo se crean una vez por venta
                 sale_lines.extend(self.crear_sale_lines_independientes_consumo(party, insurance.plan_id.name.name))
                 sale.lines = sale_lines
-                sale.on_change_lines()
                 sale.save()
                 sale_lines = []                                                         
-            
-                #import pdb
-                #pdb.set_trace()
-
+                                        
                 Tax = Pool().get('account.tax')
-                tax = Tax.search([('name', '=', 'IVA 21% Ventas')])[0]                                                                  
-                for i in sale.lines:                    
+                for i in sale.lines:                 
+                            
+
+                    tax_browse_records = Tax.search([('name','=', 'IVA 21% Ventas   ')])
                     #tax_browse_records = Tax.browse([2]) or []                                            
-                    #i.taxes = tuple(tax_browse_records)
-                    i.taxes = tuple(tax)
+                    i.taxes = tuple(tax_browse_records)
                     i.save()
 
-                                            
                 #Controlo que no sea menor a cero el total
                 if sale.total_amount >= Decimal('0'):
                 
@@ -271,28 +263,22 @@ class CreadorFacturas(object):
                     #Avanzamos a confirmado
                     sale.confirm([sale])
                     #Avanzamos a procesado. En este estado se crea la factura
-                    #de la venta.
+                    #de la venta.                                           
                     sale.process([sale])
                     #Luego de ejecutar el workflow de la venta, la guardamos.
-                    sale.save()
-
+                    sale.save()                         
                     #Seteamos las fechas de creacion, vencimiento de la factura y recargo por vencimiento.
                     #Tambien seteamos el suministro.
                     hoy = datetime.date.today()
                     if sale.invoices:
-                        sale.invoices[0].invoice_date = self.fecha_emision_factura
-                        sale.invoices[0].pos = pos
+                        #import pudb;pu.db
+                        sale.invoices[0].invoice_date = self.fecha_emision_factura                      
+                        sale.invoices[0].pos = pos                                              
                         if party.iva_condition == 'responsable_inscripto':
-                            kind = 'A'
+                            kind = 'A'                            
                         else: 
                             kind = 'B'
                             
-                        # Agrega el concepto para la afip
-                        factura = sale.invoices[0]
-                        factura.pyafipws_concept = 2 # 2 es servicios
-                        factura.pyafipws_billing_start_date = self.fecha_emision_factura
-                        factura.pyafipws_billing_end_date = self.fecha_emision_factura
-
                         PosSequence = Pool().get('account.pos.sequence')
                         invoice_type, invoice_type_desc = INVOICE_TYPE_AFIP_CODE[
                                 ('out', kind)
@@ -308,9 +294,8 @@ class CreadorFacturas(object):
                         
                         #QUEDA EN BORRADOR
                                                                                     
-                        Transaction().cursor.commit()               
+                        #Transaction().cursor.commit()               
 
                 #self.actualizar_resumen_importacion(sale)
 
         return True
-        
