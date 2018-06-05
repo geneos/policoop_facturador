@@ -257,9 +257,7 @@ class CreadorFacturas(object):
                 sale_lines = []                                                         
                                         
                 Tax = Pool().get('account.tax')
-                import pdb
-                pdb.set_trace()
-                
+               
                 for i in sale.lines:                 
                                             
                     tax_browse_records = Tax.search([('name','=', 'IVA 21% Ventas')])
@@ -310,10 +308,7 @@ class CreadorFacturas(object):
                         sale.invoices[0].pyafipws_concept = 2 # 2 es servicios
                         sale.invoices[0].pyafipws_billing_start_date = self.fecha_emision_factura
                         sale.invoices[0].pyafipws_billing_end_date = self.fecha_emision_factura
-                        
-                        import pdb
-                        pdb.set_trace()
-                        
+                                            
                         sale.invoices[0].save()
                         
                         #QUEDA EN BORRADOR
