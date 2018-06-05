@@ -260,7 +260,7 @@ class CreadorFacturas(object):
                 for i in sale.lines:                 
                             
 
-                    tax_browse_records = Tax.search([('name','=', 'IVA 21% Ventas   ')])
+                    tax_browse_records = Tax.search([('name','=', 'IVA 21% Ventas')])
                     #tax_browse_records = Tax.browse([2]) or []                                            
                     i.taxes = tuple(tax_browse_records)
                     i.save()
