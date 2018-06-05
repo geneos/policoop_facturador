@@ -287,11 +287,7 @@ class CreadorFacturas(object):
                             kind = 'A'                            
                         else: 
                             kind = 'B'
-                            
-                        sale.invoices[0].pyafipws_concept = 2 # 2 es servicios
-                        sale.invoices[0].pyafipws_billing_start_date = self.fecha_emision_factura
-                        sale.invoices[0].pyafipws_billing_end_date = self.fecha_emision_factura
-
+                                                    
                         sale.invoices[0].invoice_date = self.fecha_emision_factura                      
                         sale.invoices[0].pos = pos                                              
                         
@@ -309,6 +305,13 @@ class CreadorFacturas(object):
                         ])
 
                         sale.invoices[0].invoice_type = sequences[0].id
+                        sale.invoices[0].pyafipws_concept = 2 # 2 es servicios
+                        sale.invoices[0].pyafipws_billing_start_date = self.fecha_emision_factura
+                        sale.invoices[0].pyafipws_billing_end_date = self.fecha_emision_factura
+                        
+                        import pdb
+                        pdb.set_trace()
+                        
                         sale.invoices[0].save()
                         
                         #QUEDA EN BORRADOR
