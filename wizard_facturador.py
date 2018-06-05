@@ -307,7 +307,7 @@ class CreadorFacturas(object):
                         sale.invoices[0].invoice_type = sequences[0].id
                         sale.invoices[0].pyafipws_concept = 2 # 2 es servicios
 
-                        original = datetime.datetime.strptime(self.fecha_emision_factura , "%Y/%m/%d")
+                        original = datetime.datetime.strptime(str(self.fecha_emision_factura) , "%Y/%m/%d")
                         desde = original + datetime.timedelta(days=1)
                         hasta = original + datetime.timedelta(days=31)
 
@@ -315,7 +315,7 @@ class CreadorFacturas(object):
                         #sale.invoices[0].pyafipws_billing_end_date = self.fecha_emision_factura
                         sale.invoices[0].pyafipws_billing_start_date = desde
                         sale.invoices[0].pyafipws_billing_end_date = hasta
-                                                                    
+
                         sale.invoices[0].save()
                         
                         #QUEDA EN BORRADOR
