@@ -51,7 +51,7 @@ class AutorizarFe(Wizard):
                     where state in ('draft','validated')
                     and type in ('out_invoice', 'out_credit_note')
                 '''        
-        #query += '''and pos = \'%s\' ''' % (self.start.pos.id)
+        query += '''and pos = \'%s\' ''' % (self.start.pos.id)
 
         if self.start.fecha_emision:
             query += '''and invoice_date = \'%s\' ''' % (self.start.fecha_emision)
@@ -60,8 +60,8 @@ class AutorizarFe(Wizard):
         cursor.execute(query)
         invoices = cursor.fetchall()
  
-        import pdb
-        pdb.set_trace()
+        #import pdb
+        #pdb.set_trace()
 
         for item in invoices:
             try:
