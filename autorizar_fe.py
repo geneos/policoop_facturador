@@ -59,8 +59,6 @@ class AutorizarFe(Wizard):
         if self.start.fecha_emision:
             query += '''and invoice_date = \'%s\' ''' % (self.start.fecha_emision)
      
-        import pdb
-        pdb.set_trace()
         
         cursor = Transaction().connection.cursor()
         cursor.execute(query)
