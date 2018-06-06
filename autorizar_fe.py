@@ -2,7 +2,7 @@
 from trytond.pool import Pool
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction    
 import datetime
 from decimal import Decimal
 
@@ -53,6 +53,7 @@ class AutorizarFe(Wizard):
                 '''
 
  
+        
         query += '''and pos = \'%s\' ''' % (self.start.pos.id)
 
         if self.start.fecha_emision:
@@ -61,7 +62,7 @@ class AutorizarFe(Wizard):
         import pdb
         pdb.set_trace()
         
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         cursor.execute(query)
         invoices = cursor.fetchall()
  
