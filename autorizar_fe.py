@@ -50,20 +50,18 @@ class AutorizarFe(Wizard):
         query = '''SELECT id from account_invoice
                     where state in ('draft','validated')
                     and type in ('out_invoice', 'out_credit_note')
-                '''
-
- 
-        
+                '''        
         query += '''and pos = \'%s\' ''' % (self.start.pos.id)
 
         if self.start.fecha_emision:
             query += '''and invoice_date = \'%s\' ''' % (self.start.fecha_emision)
-     
-        
+             
         cursor = Transaction().connection.cursor()
         cursor.execute(query)
         invoices = cursor.fetchall()
  
+        import pdb
+        pdb.set_trace()
 
         for item in invoices:
             try:
