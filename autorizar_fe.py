@@ -41,7 +41,7 @@ class AutorizarFe(Wizard):
 
         invoice.post([invoice])
 
-        Transaction().connection.cursor().commit()
+        Transaction.commit()
 
 
 
@@ -60,8 +60,8 @@ class AutorizarFe(Wizard):
         cursor.execute(query)
         invoices = cursor.fetchall()
  
-        import pdb
-        pdb.set_trace()
+        #import pdb
+        #pdb.set_trace()
 
         for item in invoices:
             try:
