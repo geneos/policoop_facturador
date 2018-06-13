@@ -60,8 +60,8 @@ class AutorizarFe(Wizard):
         cursor.execute(query)
         invoices = cursor.fetchall()
  
-        #import pdb
-        #pdb.set_trace()
+        import pdb
+        pdb.set_trace()
 
         for item in invoices:
             try:
