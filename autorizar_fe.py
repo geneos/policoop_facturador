@@ -49,7 +49,7 @@ class AutorizarFe(Wizard):
 
         query = '''SELECT id from account_invoice
                     where state in ('draft','validated')
-                    and type in ('out')
+                    and type = 'out'
                 '''        
         query += '''and pos = \'%s\' ''' % (self.start.pos.id)
 
