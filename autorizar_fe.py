@@ -41,7 +41,7 @@ class AutorizarFe(Wizard):
 
         invoice.post([invoice])
 
-        Transaction().cursor.commit()
+        Transaction().connection.cursor().commit()
 
 
 
