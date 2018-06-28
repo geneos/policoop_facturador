@@ -3,5 +3,4 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
    	<label name="resumen" string="Facturas Creadas"/>    
-	<label name="resumen" id="resumen"/>
 </form>
